@@ -245,6 +245,7 @@ function togglePause() {
 }
 
 function loop(ts) {
+  if (gameOver || paused) return;
   const dt = ts - lastTime;
   lastTime = ts;
   dropAccum += dt;
@@ -257,6 +258,9 @@ function loop(ts) {
     }
   }
   draw();
+  // endGame() puede dispararse desde lockPiece() dentro de este mismo frame;
+  // su cancelAnimationFrame no detiene el frame en curso, así que no reprogramamos
+  if (gameOver) return;
   animId = requestAnimationFrame(loop);
 }
 
