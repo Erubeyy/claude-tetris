@@ -167,9 +167,37 @@ kbd {
 }
 
 #theme-toggle:focus-visible,
+#skin-select:focus-visible,
 #restart-btn:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
+}
+
+/* ---- Selector de skin ---- */
+#skin-select {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#skin-select:hover {
+  border-color: var(--accent);
+}
+
+/* Fondo del tablero según la skin */
+:root[data-skin="neon"] #board,
+:root[data-skin="neon"] #next-canvas {
+  background: #000;
+}
+
+:root[data-skin="pastel"] #board,
+:root[data-skin="pastel"] #next-canvas {
+  background: #faf7ff;
 }
 
 /* ---- Overlay ---- */
